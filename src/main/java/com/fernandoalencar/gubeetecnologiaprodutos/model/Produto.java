@@ -2,11 +2,14 @@ package com.fernandoalencar.gubeetecnologiaprodutos.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,17 +24,18 @@ public class Produto {
 	private Long id;
 	
 	@NotNull
-	@Column(name = "nome")
 	private String nomeProduto;
 	
 	@NotNull
 	@Size(min = 3, max = 60)
 	private String descricao;
 	
-	@ManyToMany(mappedBy = "produto")
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "mercado_alvo_id")
 	private List<MercadoAlvo> mercadoAlvo;
 	
-	@OneToMany(mappedBy = "produto")
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "mercado_alvo_id")
 	private List<Tecnologia> tecnologia;
 
 	public Long getId() {
