@@ -6,11 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
+@Table(name = "produto")
 public class Produto {
 	
 	@Id
@@ -19,17 +22,19 @@ public class Produto {
 	
 	@NotNull
 	@Size(min = 3, max = 60)
-	private String productName;
+	private String nomeProduto;
 	
 	@NotNull
 	@Size(min = 3, max = 60)
-	private String description;
+	private String descricao;
 	
 	@NotBlank
-	private List<String> targetMarket;
+	@OneToMany(mappedBy = "produto")
+	private MercadoAlvo mercadoAlvo;
 	
 	@NotBlank
-	private List<String> stack;
+	@OneToMany(mappedBy = "produto")
+	private Tecnologia tecnologia;
 
 	public Long getId() {
 		return id;
@@ -39,36 +44,36 @@ public class Produto {
 		this.id = id;
 	}
 
-	public String getProductName() {
-		return productName;
+	public String getNomeProduto() {
+		return nomeProduto;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
-	public List<String> getTargetMarket() {
-		return targetMarket;
+	public MercadoAlvo getMercadoAlvo() {
+		return mercadoAlvo;
 	}
 
-	public void setTargetMarket(List<String> targetMarket) {
-		this.targetMarket = targetMarket;
+	public void setMercadoAlvo(MercadoAlvo mercadoAlvo) {
+		this.mercadoAlvo = mercadoAlvo;
 	}
 
-	public List<String> getStack() {
-		return stack;
+	public Tecnologia getTecnologia() {
+		return tecnologia;
 	}
 
-	public void setStack(List<String> stack) {
-		this.stack = stack;
+	public void setTecnologia(Tecnologia tecnologia) {
+		this.tecnologia = tecnologia;
 	}
 
 	@Override
