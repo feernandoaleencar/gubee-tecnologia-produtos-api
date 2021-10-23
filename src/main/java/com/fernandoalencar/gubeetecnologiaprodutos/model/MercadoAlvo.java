@@ -1,30 +1,29 @@
 package com.fernandoalencar.gubeetecnologiaprodutos.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "mercado_alvo")
 public class MercadoAlvo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false)
+	@Column(name = "mercado_alvo_id", nullable = false)
 	private Long id;
 
 	@NotBlank
 	private String nome;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_mercado_alvo")
-	private Produto produto;
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "mercadoAlvo")
+	private List<Produto> produtos;
 	
 	public Long getId() {
 		return id;
@@ -42,12 +41,12 @@ public class MercadoAlvo {
 		this.nome = nome;
 	}
 	
-	public Produto getProduto() {
-		return produto;
+	public List<Produto> getProdutos() {
+		return produtos;
 	}
 
-	public void setProduto(Produto produto) {
-		this.produto = produto;
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
 	}
 
 	@Override
