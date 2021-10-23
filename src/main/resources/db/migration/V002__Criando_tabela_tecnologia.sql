@@ -1,4 +1,4 @@
-CREATE TABLE target_market (
+CREATE TABLE tecnologia (
   id BIGINT NOT NULL AUTO_INCREMENT,
   nome VARCHAR(60) NOT NULL,
   
