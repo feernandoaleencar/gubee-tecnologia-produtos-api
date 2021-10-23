@@ -1,21 +1,31 @@
 package com.fernandoalencar.gubeetecnologiaprodutos.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "tecnologia")
 public class Tecnologia {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false)
 	private Long id;
 
 	@NotBlank
 	private String nome;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "id_tecnologia")
+	private Produto produto;
+	
 	public Long getId() {
 		return id;
 	}
@@ -30,6 +40,14 @@ public class Tecnologia {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 
 	@Override

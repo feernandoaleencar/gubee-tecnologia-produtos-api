@@ -2,13 +2,14 @@ package com.fernandoalencar.gubeetecnologiaprodutos.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -21,20 +22,18 @@ public class Produto {
 	private Long id;
 	
 	@NotNull
-	@Size(min = 3, max = 60)
+	@Column(name = "nome")
 	private String nomeProduto;
 	
 	@NotNull
 	@Size(min = 3, max = 60)
 	private String descricao;
 	
-	@NotBlank
-	@OneToMany(mappedBy = "produto")
-	private MercadoAlvo mercadoAlvo;
+	@ManyToMany(mappedBy = "produto")
+	private List<MercadoAlvo> mercadoAlvo;
 	
-	@NotBlank
 	@OneToMany(mappedBy = "produto")
-	private Tecnologia tecnologia;
+	private List<Tecnologia> tecnologia;
 
 	public Long getId() {
 		return id;
@@ -60,19 +59,19 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public MercadoAlvo getMercadoAlvo() {
+	public List<MercadoAlvo> getMercadoAlvo() {
 		return mercadoAlvo;
 	}
 
-	public void setMercadoAlvo(MercadoAlvo mercadoAlvo) {
+	public void setMercadoAlvo(List<MercadoAlvo> mercadoAlvo) {
 		this.mercadoAlvo = mercadoAlvo;
 	}
 
-	public Tecnologia getTecnologia() {
+	public List<Tecnologia> getTecnologia() {
 		return tecnologia;
 	}
 
-	public void setTecnologia(Tecnologia tecnologia) {
+	public void setTecnologia(List<Tecnologia> tecnologia) {
 		this.tecnologia = tecnologia;
 	}
 
