@@ -24,7 +24,6 @@ public class Tecnologia {
 	private String nome;
 	
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "tecnologia")
-	@JoinColumn(name = "id_tecnologia")
 	private List<Produto> produtos;
 	
 	public Long getId() {
