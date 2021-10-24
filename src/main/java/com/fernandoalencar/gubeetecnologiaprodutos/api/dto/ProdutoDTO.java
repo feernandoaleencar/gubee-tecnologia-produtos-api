@@ -32,16 +32,20 @@ public class ProdutoDTO {
 			this.descricao = descricao;
 		}
 
-		public List<MercadoAlvo> getMercadoAlvo() {
-			return mercadoAlvo;
+		public List<String> getMercadoAlvo() {
+			ArrayList<String> array = new ArrayList<String>();
+	        mercadoAlvo.forEach(mercadoAlvo -> array.add(mercadoAlvo.getNome()));
+	        return array;
 		}
 
 		public void setMercadoAlvo(List<MercadoAlvo> mercadoAlvo) {
 			this.mercadoAlvo = mercadoAlvo;
 		}
 
-		public List<Tecnologia> getTecnologia() {
-			return tecnologia;
+		public List<String> getTecnologia() {
+			ArrayList<String> array = new ArrayList<String>();
+	        tecnologia.forEach(tecnologia -> array.add(tecnologia.getNome()));
+			return array;
 		}
 
 		public void setTecnologia(List<Tecnologia> tecnologia) {

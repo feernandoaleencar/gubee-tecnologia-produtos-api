@@ -25,7 +25,6 @@ public class Tecnologia {
 	private String nome;
 	
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "tecnologia")
-	@JsonIgnore
 	private List<Produto> produtos;
 	
 	public Long getId() {

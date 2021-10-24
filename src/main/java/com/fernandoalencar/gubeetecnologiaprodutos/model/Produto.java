@@ -17,6 +17,7 @@ import org.hibernate.annotations.Fetch;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -27,20 +28,18 @@ public class Produto {
 	private Long id;
 	
 	@NotNull
-	private String nomeProduto;
+	private String nome;
 	
 	@NotNull
 	@Size(min = 3, max = 60)
 	private String descricao;
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JsonIgnore
 	@Fetch(org.hibernate.annotations.FetchMode.SUBSELECT)
 	@JoinColumn(name = "mercado_alvo_id")
 	private List<MercadoAlvo> mercadoAlvo;
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JsonIgnore
 	@Fetch(org.hibernate.annotations.FetchMode.SUBSELECT)
 	@JoinColumn(name = "tecnologia_id")
 	private List<Tecnologia> tecnologia;
@@ -53,12 +52,12 @@ public class Produto {
 		this.id = id;
 	}
 
-	public String getNomeProduto() {
-		return nomeProduto;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNomeProduto(String nomeProduto) {
-		this.nomeProduto = nomeProduto;
+	public void setNome(String nomeProduto) {
+		this.nome = nomeProduto;
 	}
 
 	public String getDescricao() {
@@ -109,5 +108,4 @@ public class Produto {
 			return false;
 		return true;
 	}
-
 }
