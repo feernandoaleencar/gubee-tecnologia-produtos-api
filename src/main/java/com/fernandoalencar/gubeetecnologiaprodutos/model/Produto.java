@@ -15,6 +15,10 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Fetch;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Produto {
 	
@@ -30,11 +34,13 @@ public class Produto {
 	private String descricao;
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonIgnore
 	@Fetch(org.hibernate.annotations.FetchMode.SUBSELECT)
 	@JoinColumn(name = "mercado_alvo_id")
 	private List<MercadoAlvo> mercadoAlvo;
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonIgnore
 	@Fetch(org.hibernate.annotations.FetchMode.SUBSELECT)
 	@JoinColumn(name = "tecnologia_id")
 	private List<Tecnologia> tecnologia;

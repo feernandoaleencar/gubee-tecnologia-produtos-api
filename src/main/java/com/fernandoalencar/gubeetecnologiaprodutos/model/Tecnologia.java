@@ -8,9 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Tecnologia {
@@ -24,6 +25,7 @@ public class Tecnologia {
 	private String nome;
 	
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "tecnologia")
+	@JsonIgnore
 	private List<Produto> produtos;
 	
 	public Long getId() {

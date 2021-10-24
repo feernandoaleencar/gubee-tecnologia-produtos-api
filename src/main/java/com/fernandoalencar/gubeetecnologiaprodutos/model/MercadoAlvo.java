@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class MercadoAlvo {
 
@@ -23,6 +25,7 @@ public class MercadoAlvo {
 	private String nome;
 	
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "mercadoAlvo")
+	@JsonIgnore
 	private List<Produto> produtos;
 	
 	public Long getId() {

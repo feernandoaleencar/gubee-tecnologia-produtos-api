@@ -1,55 +1,51 @@
 package com.fernandoalencar.gubeetecnologiaprodutos.api.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fernandoalencar.gubeetecnologiaprodutos.model.MercadoAlvo;
+import com.fernandoalencar.gubeetecnologiaprodutos.model.Tecnologia;
+
 public class ProdutoDTO {
 	
-	private Long id;
-	
-	private String nomeProduto;
+	private String nome;
 	
 	private String descricao;
 	
-	private MercadoAlvoDTO mercadoAlvoDTO;
+	private List<MercadoAlvo> mercadoAlvo;
 	
-	private TecnologiaDTO tecnologiaDTO;
-	
-	public Long getId() {
-		return id;
-	}
+	private List<Tecnologia> tecnologia;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+		public String getNome() {
+			return nome;
+		}
 
-	public String getNomeProduto() {
-		return nomeProduto;
-	}
+		public void setNome(String nome) {
+			this.nome = nome;
+		}
 
-	public void setNomeProduto(String nomeProduto) {
-		this.nomeProduto = nomeProduto;
-	}
+		public String getDescricao() {
+			return descricao;
+		}
 
-	public String getDescricao() {
-		return descricao;
-	}
+		public void setDescricao(String descricao) {
+			this.descricao = descricao;
+		}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+		public List<MercadoAlvo> getMercadoAlvo() {
+			return mercadoAlvo;
+		}
 
-	public MercadoAlvoDTO getMercadoAlvoDTO() {
-		return mercadoAlvoDTO;
-	}
+		public void setMercadoAlvo(List<MercadoAlvo> mercadoAlvo) {
+			this.mercadoAlvo = mercadoAlvo;
+		}
 
-	public void setMercadoAlvoDTO(MercadoAlvoDTO mercadoAlvoDTO) {
-		this.mercadoAlvoDTO = mercadoAlvoDTO;
-	}
+		public List<Tecnologia> getTecnologia() {
+			return tecnologia;
+		}
 
-	public TecnologiaDTO getTecnologiaDTO() {
-		return tecnologiaDTO;
-	}
-
-	public void setTecnologiaDTO(TecnologiaDTO tecnologiaDTO) {
-		this.tecnologiaDTO = tecnologiaDTO;
-	}
-	
+		public void setTecnologia(List<Tecnologia> tecnologia) {
+			this.tecnologia = tecnologia;
+		}
+		
 }
