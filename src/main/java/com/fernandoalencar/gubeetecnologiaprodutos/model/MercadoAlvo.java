@@ -23,7 +23,7 @@ public class MercadoAlvo {
 
 	@NotBlank
 	private String nome;
-	
+	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "mercadoAlvo")
 	private List<Produto> produtos;
 	

@@ -12,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,11 +48,11 @@ public class ProdutoController {
 	private ModelMapper modelMapper;
 
 	@GetMapping
-	public ResponseEntity<?> listar() {
+	public List<ProdutoDTO> listar() {
 
-		Iterable<ProdutoDTO> lista = toCollectionModel(produtoRepository.findAll());
+		List<ProdutoDTO> lista = toCollectionModel(produtoRepository.findAll());
 
-		return new ResponseEntity<ProdutoDTO>(HttpStatus.OK).ok(lista);
+		return lista;
 	}
 
 	@GetMapping("/tecnologias/{ids}")

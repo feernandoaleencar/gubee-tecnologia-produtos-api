@@ -1,5 +1,10 @@
 package com.fernandoalencar.gubeetecnologiaprodutos.api.dto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.fernandoalencar.gubeetecnologiaprodutos.model.Produto;
+
 public class TecnologiaDTO {
 
 	private Long id;

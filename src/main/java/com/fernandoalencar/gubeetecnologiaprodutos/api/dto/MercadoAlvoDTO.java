@@ -20,5 +20,7 @@ public class MercadoAlvoDTO {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	
 
 }
